@@ -50,7 +50,7 @@ git commit -m <merge 节点注释>
 
 变基（改变基线）：变基的作用就是修整历史，将分支历史并入主线。
 
-注意：不要在 master 分支上这么搞
+注意：不要通过rebase对任何已经提交到公共仓库中的commit进行修改。rebase 要现在 dev 分支上合并，然后切换到主分支，在 merge dev 分支
 
 ```
 // 之前
@@ -78,3 +78,4 @@ git rebase -i master
 
 **-i** 参数打开交互界面，在 vim 编辑器中进行操作
 
+可以编辑对 dev 上这几个 commit 的处理，如输入 pick 为保留，输入 squash 则将该 commit 内容并入上一个 commit 等。在完成操作选择后（这里我们可以选择 fixup d1 和 d2，并 reword d3），输入 :wq 保存退出，会进入一个新的 vim 窗口，在此你可以进一步编辑新的 commit message，保存后 rebase 即可生效。
