@@ -79,3 +79,37 @@ git rebase -i master
 **-i** 参数打开交互界面，在 vim 编辑器中进行操作
 
 可以编辑对 dev 上这几个 commit 的处理，如输入 pick 为保留，输入 squash 则将该 commit 内容并入上一个 commit 等。在完成操作选择后（这里我们可以选择 fixup d1 和 d2，并 reword d3），输入 :wq 保存退出，会进入一个新的 vim 窗口，在此你可以进一步编辑新的 commit message，保存后 rebase 即可生效。
+
+## fetch
+
+git fetch 是将远程主机的最新内容拉到本地，用户再去确认是否合并到分支当中。
+
+```git
+git fetch <远程主机名> <branch> // 拉取远程主机的更新
+```
+
+取回更新后，会返回一个 **FETCH_HEAD**，指的是某个 branch 在服务器上的最新状态
+
+## pull
+
+拉取服务器更新并合并，是 fetch + merge 的简写
+
+```git
+git fetch <远程主机名> <branch> // 拉取最近更新
+git merge FETCH_HEAD  // 合并当前内容到当前内容中
+```
+
+## reset
+
+撤回代码和合并
+
+```
+index：索引 暂存区
+working：工作区
+
+--soft 回退并保留被标记为 add 的状态(git status 是绿色的状态)
+--mixed 默认参数，重置索引，但不重置工作树，更改后的文件被标记为未提交
+--hard 重置索引和工作树，并且中间所有的已提交、未提交的代码被抛弃
+--merge 和 --hard 类似，保留工作区和索引之间的差异
+--keep 和 --hard 类似，保留工作区和 HEAD 之间的差异
+```
