@@ -80,6 +80,27 @@ git rebase -i master
 
 可以编辑对 dev 上这几个 commit 的处理，如输入 pick 为保留，输入 squash 则将该 commit 内容并入上一个 commit 等。在完成操作选择后（这里我们可以选择 fixup d1 和 d2，并 reword d3），输入 :wq 保存退出，会进入一个新的 vim 窗口，在此你可以进一步编辑新的 commit message，保存后 rebase 即可生效。
 
+## branch
+
+分支命令
+
+```
+git branch <新分支名> // 创建新分支
+git branch // 列出本地以存在的分支
+git branch -r // 列出远端分支
+git branch -a // 列出远端和本地分支
+```
+
+## checkout
+
+切换分支
+
+```
+git checkout <branch> // 切换分支
+git checkout -b <branch>  // 切换并创建分支
+git checkout <filepath> // 撤回已保存的文件， . 表示都不保存
+```
+
 ## fetch
 
 git fetch 是将远程主机的最新内容拉到本地，用户再去确认是否合并到分支当中。
@@ -113,3 +134,7 @@ working：工作区
 --merge 和 --hard 类似，保留工作区和索引之间的差异
 --keep 和 --hard 类似，保留工作区和 HEAD 之间的差异
 ```
+
+## revert
+
+还原一个提交，并且产生一个新提交来记录本次还原。
