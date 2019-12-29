@@ -14,3 +14,12 @@ cookie 实际上是一小段文本信息，用于服务端和客户端之间的�
 | domain | 可以访问该 cookie 的域名。如果设置为 .google.com，则所以以 google.com 结尾的域名都可以访问该 cookie。注意开头必须为 **.** |
 | comment | 该 cookie 用处说明，浏览器显示 cookie 信息的时候显示该书名。 |
 | version | cookie 使用的版本号 |
+
+## 优化
+
+1. 去除没有必要的cookie，如果网页不需要就全部禁掉。
+2. 设置合理的过期时间
+3. 将静态资源分组，分别放在不同的域名下
+4. 设置 cookie 在不同的 domain （子域名）下生效
+5. 将服务器不关心的数据存储在本地，而不是在 cookie 中
+6. 合并cookie来减少键值对的数量
